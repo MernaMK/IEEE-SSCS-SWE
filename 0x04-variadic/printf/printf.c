@@ -8,8 +8,12 @@ va_start(vars,format);
 int count=0;
 while(*format !='\0')
 {
-        if(*format!='%')myPutchar(*format);
-        else
+        if(*format!='%')
+	{
+		myPutchar(*format);
+		count++;
+        }
+else
         {
                 format++;
                 if(*format=='\0')break;
