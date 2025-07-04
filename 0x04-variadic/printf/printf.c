@@ -87,7 +87,51 @@ else
                             count+=printNumberBase(num,17);
                             break;
                         }
-                       
+                        case 'p':
+                        {
+                            void *ptr = va_arg(vars, void*);
+                            if (ptr == NULL)
+                            {
+                                myPrintf("(nil)");
+                                count += 5;
+                            }
+                            else
+                            {
+                                myPrintf("0x");
+                                count += 2;
+                                unsigned long adr = (unsigned long)ptr;
+                                char buffer[20];
+                                int i = 0;
+                                if (adr == 0)
+                                {
+                                    myPutchar('0');
+                                    count++;
+                                }
+                                else
+                                {
+                                    while (adr != 0)
+                                    {
+                                        int digit = adr % 16;
+                                        if (digit < 10)
+                                        {
+  			                	buffer[i++] = digit + '0';
+                                        } 
+					else 
+					{
+                    				buffer[i++] = digit - 10 + 'a';
+                			}
+                			adr /= 16;
+            			    }
+
+            			    while (i > 0) 
+				    {
+                    			myPutchar(buffer[--i]);
+                			count++;
+            			    }
+        			}
+    }
+    break;
+}
 			
 
                 }
