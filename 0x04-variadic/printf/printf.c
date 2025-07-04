@@ -132,7 +132,51 @@ else
     }
     break;
 }
-			
+case '_':
+                        {
+                            if(*(format+1)=='s')
+                            {
+                                format++;
+                                char *str= va_arg(vars,char*);
+                                if(str==NULL)str="null";
+                                else
+                                {
+                                    while(*str)
+                                    {
+                                        if(*str>='A' && *str<='Z')myPutchar(*str-'A'+'a');
+                                        else myPutchar(*str);
+                                        count++;
+                                        str++;
+                                    }
+                                }
+                            }
+                                break;
+
+
+                        }
+                        case '=':
+                        {
+
+                            if(*(format+1)=='s')
+                            {
+                                format++;
+                                char *str= va_arg(vars,char*);
+                                if(str==NULL)str="null";
+                                else
+                                {
+                                    while(*str)
+                                    {
+                                        if(*str>='a' && *str<='z')myPutchar(*str-'a'+'A');
+                                        else myPutchar(*str);
+                                        count++;
+                                        str++;
+                                    }
+                                }
+                            }
+                                break;
+
+
+                        }			
 
                 }
         }
