@@ -43,6 +43,38 @@ else
                             }
 			    break;
 			}
+			case 'i':
+                        {
+                            int num = va_arg(vars, int);
+                            char buffer[12];
+                            int i = 0;
+
+                            if (num == 0)
+                            {
+                                myPutchar('0');
+                                count++;
+                                break;
+                            }
+
+                            if (num < 0)
+                            {
+                                myPutchar('-');
+                                count++;
+                                num = -num;
+                            }
+
+                            while (num > 0)
+                            {
+                                buffer[i++] = (num % 10) + '0';
+                                num /= 10;
+                            }
+                            while (i > 0)
+                            {
+                                myPutchar(buffer[--i]);
+                                count++;
+                            }
+                            break;
+                        }
 
                 }
         }
