@@ -44,6 +44,7 @@ else
 			    break;
 			}
 			case 'i':
+			case 'd':
                         {
                             int num = va_arg(vars, int);
                             char buffer[12];
@@ -73,7 +74,41 @@ else
                                 myPutchar(buffer[--i]);
                                 count++;
                             }
+			    i=0;
                             break;
+                        }
+			case 'b':
+                        {
+			    int num = va_arg(vars,int);
+                            int buffer[12];
+                            int i=0;
+                            if (num<0)
+                            {
+                                myPrintf("%s","not positive");
+                                break;
+                            }
+                            else
+                            {
+                                while(num!=0)
+                                {
+                                    buffer[i]=(num%2)+'0';
+                                    if(num%2==1)num=(num-1)/2;
+                                    else num=num/2;
+                                    i++;
+                                }
+                                while(i<12)
+                                {
+                                    buffer[i]='0';
+                                    i++;
+                                }
+                                while (i > 0)
+                                {
+                                    myPutchar(buffer[--i]);
+                                    count++;
+                                }
+                            	i=0;
+			    }
+			    break;
                         }
 
                 }
