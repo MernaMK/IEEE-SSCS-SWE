@@ -177,7 +177,18 @@ case '_':
 
 
                         }			
-
+			case '+':
+                        {
+                            if(*(format+1)=='d'||*(format+1)=='i')
+                            {
+                                format++;
+                                int num= va_arg(vars,int);
+                                if(num==0){myPutchar('0');count++;}
+                                else if(num>0){myPutchar('+');count++;printNumberBase(num,10);}
+                                else {myPutchar('-');count++;num=-num;printNumberBase(num,10);}
+                                break;
+                            }
+                        }
                 }
         }
 	format++;
