@@ -47,69 +47,48 @@ else
 			case 'd':
                         {
                             int num = va_arg(vars, int);
-                            char buffer[12];
-                            int i = 0;
-
-                            if (num == 0)
-                            {
-                                myPutchar('0');
-                                count++;
-                                break;
-                            }
-
                             if (num < 0)
                             {
                                 myPutchar('-');
                                 count++;
                                 num = -num;
                             }
-
-                            while (num > 0)
-                            {
-                                buffer[i++] = (num % 10) + '0';
-                                num /= 10;
-                            }
-                            while (i > 0)
-                            {
-                                myPutchar(buffer[--i]);
-                                count++;
-                            }
-			    i=0;
+			    count+=printNumberBase(num,10,0);
                             break;
                         }
 			case 'b':
                         {
 			    int num = va_arg(vars,int);
-                            int buffer[12];
-                            int i=0;
-                            if (num<0)
-                            {
-                                myPrintf("%s","not positive");
-                                break;
-                            }
-                            else
-                            {
-                                while(num!=0)
-                                {
-                                    buffer[i]=(num%2)+'0';
-                                    if(num%2==1)num=(num-1)/2;
-                                    else num=num/2;
-                                    i++;
-                                }
-                                while(i<12)
-                                {
-                                    buffer[i]='0';
-                                    i++;
-                                }
-                                while (i > 0)
-                                {
-                                    myPutchar(buffer[--i]);
-                                    count++;
-                                }
-                            	i=0;
-			    }
+                            count+=printNumberBase(num,2,1);
 			    break;
                         }
+			case 'u':
+                        {
+                            int num = va_arg(vars, int);
+                            count+=printNumberBase(num,10,0);
+                            break;
+                        }
+
+                        case 'o':
+                        {
+                            int num = va_arg(vars,int);
+                            count+=printNumberBase(num,8,1);
+			    break;
+			}
+			case 'x':
+                        {
+                            int num = va_arg(vars,int);
+                            count+=printNumberBase(num,16,1);
+                            break;
+                        }
+                        case 'X':
+                        {
+                            int num = va_arg(vars,int);
+                            count+=printNumberBase(num,17,1);
+                            break;
+                        }
+                       
+			
 
                 }
         }
