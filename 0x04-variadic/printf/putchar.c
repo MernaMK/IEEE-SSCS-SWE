@@ -7,8 +7,8 @@ if(write (1,&c,1)==1)return 1;
 else return 0;
 }
 
-int printNumberBase(int num, int base ,int fillBits) {
-    char buffer[12];
+int printNumberBase(int num, int base ) {
+    char buffer[20];
     int i = 0;
     int count = 0;
     int uppercase = (base == 17); // Check for uppercase hex
@@ -39,16 +39,6 @@ int printNumberBase(int num, int base ,int fillBits) {
         }
         num /= base;
     }
-    if(fillBits==1)
-    {
-        while(i<12)
-        {
-            buffer[i]='0';
-            i++;
-        }
-
-    }
-
 
     while (i > 0) {
         myPutchar(buffer[--i]);

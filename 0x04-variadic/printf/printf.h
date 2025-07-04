@@ -9,7 +9,7 @@
 #include <limits.h>
 
 int myPutchar(int c);
-int printNumberBase(int num,int base,int fillBits);
+int printNumberBase(int num,int base);
 int myPrintf(char* format,...);
 
 #endif

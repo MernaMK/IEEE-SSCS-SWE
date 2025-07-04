@@ -53,38 +53,38 @@ else
                                 count++;
                                 num = -num;
                             }
-			    count+=printNumberBase(num,10,0);
+			    count+=printNumberBase(num,10);
                             break;
                         }
 			case 'b':
                         {
 			    int num = va_arg(vars,int);
-                            count+=printNumberBase(num,2,1);
+                            count+=printNumberBase(num,2);
 			    break;
                         }
 			case 'u':
                         {
                             int num = va_arg(vars, int);
-                            count+=printNumberBase(num,10,0);
+                            count+=printNumberBase(num,10);
                             break;
                         }
 
                         case 'o':
                         {
                             int num = va_arg(vars,int);
-                            count+=printNumberBase(num,8,1);
+                            count+=printNumberBase(num,8);
 			    break;
 			}
 			case 'x':
                         {
                             int num = va_arg(vars,int);
-                            count+=printNumberBase(num,16,1);
+                            count+=printNumberBase(num,16);
                             break;
                         }
                         case 'X':
                         {
                             int num = va_arg(vars,int);
-                            count+=printNumberBase(num,17,1);
+                            count+=printNumberBase(num,17);
                             break;
                         }
                        
