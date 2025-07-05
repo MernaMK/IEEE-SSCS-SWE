@@ -197,8 +197,33 @@ case '_':
                                 if(num==0){myPutchar('0');count++;}
                                 else if(num>0){myPutchar('+');count++;printNumberBase(num,10);}
                                 else {myPutchar('-');count++;num=-num;printNumberBase(num,10);}
-                                break;
                             }
+			    break;
+                        }
+			case 'r':
+                        {
+                            char *str= va_arg(vars,char*);
+                            if(str==NULL)str="null";
+                            else
+                            {
+                                int rev[32];
+                                int i=0;
+                                while(*str)
+                                {
+                                    if(i>=31)break;
+                                    rev[i]=*str;
+                                    i++;
+                                    str++;
+                                }
+                                while (i > 0)
+                                {
+                                    myPutchar(rev[--i]);
+                                    count++;
+                                }
+
+
+                            }
+                            break;
                         }
                 }
         }
