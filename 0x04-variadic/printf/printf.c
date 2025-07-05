@@ -17,6 +17,14 @@ else
         {
                 format++;
                 if(*format=='\0')break;
+		int left= 0;
+                int width = 0;
+                if (*format == '-'){left= 1;format++;}
+                while (*format >= '0' && *format <= '9')
+                {
+                    width = width * 10 + (*format - '0');
+                    format++;
+                }
                 switch(*format)
                 {
                         case '%':
@@ -48,12 +56,15 @@ else
                         {
                             int num = va_arg(vars, int);
                             if (num < 0)
-                            {
-                                myPutchar('-');
-                                count++;
-                                num = -num;
+                            {myPutchar('-');count++;num = -num;}
+			    if(left)
+                            {   count+=printNumberBase(num,10);
+                                for(int i=0;i<width;i++){myPutchar(' ');count++;}
                             }
-			    count+=printNumberBase(num,10);
+                            else
+                            {   for(int i=0;i<width;i++){myPutchar(' ');count++;}
+                                count+=printNumberBase(num,10);
+                            }
                             break;
                         }
 			case 'b':
