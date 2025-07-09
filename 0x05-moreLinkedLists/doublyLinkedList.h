@@ -1,5 +1,5 @@
-#ifndef myPutchar_H
-#define myPutchar_H
+#ifndef dLinkedList_H
+#define dLinkedList_H
 
 #include "stdio.h"
 struct Node
