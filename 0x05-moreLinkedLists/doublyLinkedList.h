@@ -8,4 +8,8 @@ struct Node
  struct Node *pre;
  struct Node *next;
 };
+
+struct Node *head;
+head->pre=NULL;head->next=NULL;head->data=0
+
 #endif
