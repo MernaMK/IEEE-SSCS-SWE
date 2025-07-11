@@ -1,6 +1,6 @@
 #ifndef stack_H
 #define stack_H
-
+#include "stdio.h"
  typedef struct
  {
      int type;
